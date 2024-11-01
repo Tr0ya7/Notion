@@ -1,7 +1,7 @@
 "use client"
 
 import { cn } from "@/lib/utils"
-import { ChevronsLeft, MenuIcon, PlusCircle, Search, Settings } from "lucide-react"
+import { ChevronsLeft, MenuIcon, Plus, PlusCircle, Search, Settings, Trash } from "lucide-react"
 import { usePathname } from "next/navigation"
 import { ElementRef, useEffect, useRef, useState } from "react"
 import { useMediaQuery } from "usehooks-ts"
@@ -11,6 +11,9 @@ import { api } from "@/convex/_generated/api"
 import Item from "../Item"
 import { toast } from "sonner"
 import DocumentList from "../DocumentList"
+import { Popover, PopoverContent } from "@radix-ui/react-popover"
+import { PopoverTrigger } from "../ui/popover"
+import TrashBox from "../TrashBox"
 
 const Navigation = () => {
     const isMobile = useMediaQuery("(max-width: 768px)")
@@ -121,6 +124,15 @@ const Navigation = () => {
                 </div>
                 <div className="mt-4">
                     <DocumentList />
+                    <Item label="New page" icon={Plus} onClick={() => handleCreate()} />
+                    <Popover>
+                        <PopoverTrigger className="w-full mt-4">
+                            <Item label="Trash" icon={Trash} />
+                        </PopoverTrigger>
+                        <PopoverContent className="p-0 w-72" side={isMobile ? "bottom" : "right"}>                            
+                            <TrashBox />            
+                        </PopoverContent>
+                    </Popover>
                 </div>
                 <div 
                     className="opacity-0 group-hover/sidebar:opacity-100 transition cursor-ew-resize absolute h-full w-1 bg-primary/10 right-0 top-0" 

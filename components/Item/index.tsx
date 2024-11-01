@@ -10,8 +10,8 @@ import { api } from "@/convex/_generated/api"
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../ui/dropdown-menu"
-import { DropdownMenuSeparator } from "@radix-ui/react-dropdown-menu"
-import { useUser } from "@clerk/clerk-react"
+// import { DropdownMenuSeparator } from "@radix-ui/react-dropdown-menu"
+// import { useUser } from "@clerk/clerk-react"
 
 interface ItemProps {
     id?: Id<"documents">
@@ -22,7 +22,7 @@ interface ItemProps {
     level?: number
     onExpand?: () => void
     label: string
-    onClick: () => void
+    onClick?: () => void
     icon: LucideIcon
 }
 
@@ -30,7 +30,7 @@ const Item = ({ id, documentIcon, active, isSearch, level = 0, onExpand, expande
     const ChevronIcon = expanded  ? ChevronDown : ChevronRight
     const create = useMutation(api.documents.create)
     const router = useRouter()
-    const user = useUser()
+    // const user = useUser()
     const archive = useMutation(api.documents.archive)
     
     const handleExpanded = (event: MouseEvent<HTMLDivElement>) => {
@@ -104,10 +104,10 @@ const Item = ({ id, documentIcon, active, isSearch, level = 0, onExpand, expande
                                 <Trash className="h-4 w-4 mr-2" />
                                 Delete
                             </DropdownMenuItem>
-                            <DropdownMenuSeparator />
+                            {/* <DropdownMenuSeparator />
                             <div className="text-xs text-muted-foreground p-2">
                                 Last edition {user?.fullName}
-                            </div>
+                            </div> */}
                         </DropdownMenuContent>
                     </DropdownMenu>
                     <div role="button" onClick={(event) => onCreate(event)} className="opacity-0 group-hover:opacity-100 h-full ml-auto rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600">
