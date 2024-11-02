@@ -75,7 +75,7 @@ const Item = ({ id, documentIcon, active, isSearch, level = 0, onExpand, expande
             style={{ paddingLeft: level ? `${(level * 12) + 12}px` : "12px" }}
         >
             {!!id && 
-                <div role="button" className="h-full rounded-sm mr-1 hover:bg-neutral-300 dark:bg-neutral-600" onClick={(event) => handleExpanded(event)}>
+                <div role="button" className="h-full rounded-sm mr-1 hover:bg-neutral-300 dark:hover:bg-neutral-600" onClick={(event) => handleExpanded(event)}>
                     <ChevronIcon className="h-4 w-4 shrink-0 text-muted-foreground/50" />
                 </div>
             }

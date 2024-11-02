@@ -1,9 +1,10 @@
 import type { Metadata } from "next"
 import localFont from "next/font/local"
 import "./globals.css"
-import { ThemeProvider } from "@/components/provider/theme-provider"
-import { ConvexClientProvider } from "@/components/provider/convex-provider"
+import { ThemeProvider } from "@/components/provider/themeProvider"
+import { ConvexClientProvider } from "@/components/provider/convexClientProvider"
 import { Toaster } from "sonner"
+import { ModalProvider } from "@/components/provider/modalProvider"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <ConvexClientProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange storageKey="notion-theme-2">
             <Toaster position="bottom-center" />
+            <ModalProvider />
             {children}
           </ThemeProvider>
         </ConvexClientProvider>
