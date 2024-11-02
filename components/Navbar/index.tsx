@@ -1,6 +1,6 @@
 "use client"
 
-import { useScrollTop } from "@/hooks/use-scroll-top"
+import { useScrollTop } from "@/hooks/useScroll-top"
 import { cn } from "@/lib/utils"
 import Logo from "../Logo"
 import { ModeToggle } from "../mode-toggle"

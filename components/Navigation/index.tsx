@@ -14,11 +14,13 @@ import DocumentList from "../DocumentList"
 import { Popover, PopoverContent } from "@radix-ui/react-popover"
 import { PopoverTrigger } from "../ui/popover"
 import TrashBox from "../TrashBox"
+import { useSearch } from "@/hooks/useSearch"
 
 const Navigation = () => {
     const isMobile = useMediaQuery("(max-width: 768px)")
     const pathname = usePathname()
     const create = useMutation(api.documents.create)
+    const search = useSearch()
 
     const isResizingRef = useRef(false)
     const sidebarRef = useRef<HTMLDivElement>(null)
@@ -118,7 +120,7 @@ const Navigation = () => {
                 </div>
                 <div>
                     <UserItem />
-                    <Item label="Search" icon={Search} isSearch onClick={() => {}} />
+                    <Item label="Search" icon={Search} isSearch onClick={() => search.onOpen} />
                     <Item label="Settings" icon={Settings} onClick={() => {}} />
                     <Item label="New page" icon={PlusCircle} onClick={() => handleCreate()} />
                 </div>
