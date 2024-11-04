@@ -1,7 +1,7 @@
 "use client"
 
-import Navigation from "@/components/Navigation"
-import Spinner from "@/components/Spinner"
+import Navigation from "@/components/DocumentsPage/Navigation"
+import Spinner from "@/components/LandingPage/Spinner"
 import { SearchCommand } from "@/components/ui/search-command"
 import { useConvexAuth } from "convex/react"
 import { redirect } from "next/navigation"

@@ -34,7 +34,7 @@ const DocumentList = ({ parentDocumentId, level = 0 }: DocumentListProps) => {
     })
 
     const onRedirect = (documentId: string) => {
-        router.push(`/documents/${documentId}`)
+        router.push(`/documents/${documentId}`) // enviando para páginas dinâmicas
     }
 
     if (documents === undefined) {

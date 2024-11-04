@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { SettingsModal } from "../modals/SettingModal"
+import { SettingsModal } from "../DocumentsPage/modals/SettingModal"
 
 export const ModalProvider = () => {
     const [isMounted, setIsMounted] = useState(false)

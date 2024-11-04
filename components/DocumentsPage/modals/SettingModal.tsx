@@ -1,7 +1,7 @@
 import { useSettings } from "@/hooks/useSettings"
-import { Dialog, DialogContent, DialogHeader } from "../ui/dialog"
-import { Label } from "../ui/label"
-import { ModeToggle } from "../mode-toggle"
+import { Dialog, DialogContent, DialogHeader } from "../../ui/dialog"
+import { Label } from "../../ui/label"
+import { ModeToggle } from "../../LandingPage/mode-toggle"
 
 export const SettingsModal = () => {
     const settings = useSettings()

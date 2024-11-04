@@ -1,5 +1,5 @@
 import Logo from "../Logo"
-import { Button } from "../ui/button"
+import { Button } from "../../ui/button"
 
 const Footer = () => (
     <div className="flex items-center w-full p-6 bg-background z-50">

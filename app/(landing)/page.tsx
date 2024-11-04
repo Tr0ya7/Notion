@@ -1,6 +1,6 @@
-import Footer from "@/components/Footer"
-import Heading from "@/components/Heading"
-import Heroes from "@/components/Heroes"
+import Footer from "@/components/LandingPage/Footer"
+import Heading from "@/components/LandingPage/Heading"
+import Heroes from "@/components/LandingPage/Heroes"
 
 const Home = () => (
   <main className="min-h-full flex flex-col">

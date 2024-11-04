@@ -6,9 +6,9 @@ import { useMutation, useQuery } from "convex/react"
 import { useParams, useRouter } from "next/navigation"
 import { MouseEvent, useState } from "react"
 import { toast } from "sonner"
-import Spinner from "../Spinner"
+import Spinner from "../../LandingPage/Spinner"
 import { Search, Trash, Undo } from "lucide-react"
-import { Input } from "../ui/input"
+import { Input } from "../../ui/input"
 import ConfirmModal from "../modals/ConfirmModal"
 
 const TrashBox = () => {
