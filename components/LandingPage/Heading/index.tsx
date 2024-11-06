@@ -3,7 +3,7 @@
 import { ArrowRight } from "lucide-react"
 import { Button } from "../../ui/button"
 import { useConvexAuth } from "convex/react"
-import Spinner from "../Spinner"
+import Spinner from "../../Spinner"
 import Link from "next/link"
 import { SignInButton } from "@clerk/clerk-react"
 

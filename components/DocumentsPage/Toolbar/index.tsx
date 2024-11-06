@@ -8,6 +8,7 @@ import { ElementRef, KeyboardEvent, useRef, useState } from "react"
 import { useMutation } from "convex/react"
 import { api } from "@/convex/_generated/api"
 import TextareaAutosize from "react-textarea-autosize"
+import { useCoverImage } from "@/hooks/useCoverImage"
 
 interface ToolbarProps {
     initialData: Doc<"documents">
@@ -16,6 +17,7 @@ interface ToolbarProps {
 
 const Toolbar = ({ initialData, preview }: ToolbarProps) => {
     const inputRef = useRef<ElementRef<"textarea">>(null)
+    const coverImage = useCoverImage()
     
     const [isEditing, setIsEditing] = useState(false)
     const [value, setValue] = useState(initialData.title)
@@ -74,7 +76,9 @@ const Toolbar = ({ initialData, preview }: ToolbarProps) => {
                 { !initialData.icon && !preview && 
                     <IconPicker onChange={onIconSelect} asChild><Button className="text-muted-foreground text-xs" variant="outline" size="sm"><Smile className="w-4 h-4 mr-2" />Add icon</Button></IconPicker>
                 } {/* */}
-                { !initialData.coverImage && !preview && <Button className="text-muted-foreground text-sm" variant="outline" size="sm" onClick={() => {}}><ImageIcon className="w-4 h-4 mr-2" />Add cover</Button>  }
+                { !initialData.coverImage && !preview && 
+                    <Button className="text-muted-foreground text-sm" variant="outline" size="sm" onClick={() => coverImage.onOpen()}><ImageIcon className="w-4 h-4 mr-2" />Add cover</Button>  
+                }
             </div>
             {isEditing && !preview 
                 ? 
