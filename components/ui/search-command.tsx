@@ -42,7 +42,7 @@ export const SearchCommand = () => {
 
     return (
         <CommandDialog open={isOpen} onOpenChange={onClose}>
-            <CommandInput /* placeholder={`Search ${user?.fullName}'s Notion...`} */ />
+            <CommandInput />
             <CommandList>
                 <CommandEmpty>
                     No results found
