@@ -2,7 +2,7 @@
 
 import { Id } from "@/convex/_generated/dataModel"
 import { cn } from "@/lib/utils"
-import { ChevronDown, ChevronRight, Divide, LucideIcon, MoreHorizontal, Plus, Trash } from "lucide-react"
+import { ChevronDown, ChevronRight, LucideIcon, MoreHorizontal, Plus, Trash } from "lucide-react"
 import { Skeleton } from "../../ui/skeleton"
 import { MouseEvent } from "react"
 import { useMutation } from "convex/react"
