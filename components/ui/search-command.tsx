@@ -2,7 +2,6 @@
 
 import { api } from "@/convex/_generated/api"
 import { useSearch } from "@/hooks/useSearch"
-// import { useUser } from "@clerk/clerk-react"
 import { useQuery } from "convex/react"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
@@ -10,7 +9,6 @@ import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, C
 import { File } from "lucide-react"
 
 export const SearchCommand = () => {
-    // const { user } = useUser()
     const router = useRouter()
     const documents = useQuery(api.documents.getSearch)
     const [isMounted, setIsMounted] = useState(false)
@@ -49,7 +47,7 @@ export const SearchCommand = () => {
                 </CommandEmpty>
                 <CommandGroup heading="Documents">
                     {documents?.map((document) => (
-                        <CommandItem key={document._id} title={document.title} value={`${document._id}-${document.title}`} onSelect={onSelect}> // ajustar
+                        <CommandItem key={document._id} title={document.title} value={`${document._id}-${document.title}`} onSelect={onSelect}>
                             {document.icon ? <p className="mr-2 text-[~18px]">{document.icon}</p> : <File className="mr-2 h-4 w-4" />}
                             <span>
                                 {document.title}
