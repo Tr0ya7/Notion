@@ -6,7 +6,7 @@ import ToolBar from "@/components/DocumentsPage/Toolbar"
 import { Skeleton } from "@/components/ui/skeleton"
 import { api } from "@/convex/_generated/api"
 import { Id } from "@/convex/_generated/dataModel"
-import { useMutation, useQuery } from "convex/react"
+import { useQuery } from "convex/react"
 
 interface DocumentPageProps {
     params: {
@@ -15,7 +15,6 @@ interface DocumentPageProps {
 }
 
 const DocumentIdPage = ({ params }: DocumentPageProps) => {
-    const update = useMutation(api.documents.update)
     const document = useQuery(api.documents.getById, {
         documentId: params.documentId
     })
@@ -36,19 +35,12 @@ const DocumentIdPage = ({ params }: DocumentPageProps) => {
         )
     if (document === null) return <div>Not found</div>
 
-    const onChange = (content: string) => {
-        update({
-            id: params.documentId,
-            content
-        })
-    }
-
     return (
         <div className="pb-40">
             <Cover url={document.coverImage} />
             <div className="mx-auto md:max-w-3xl lg:max-w-4xl">
                 <ToolBar initialData={document} />
-                <Editor initialContent={document.content} onChange={onChange} /> 
+                <Editor /> 
             </div>
         </div>
     )
