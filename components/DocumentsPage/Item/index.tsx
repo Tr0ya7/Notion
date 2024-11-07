@@ -45,6 +45,8 @@ const Item = ({ id, documentIcon, active, isSearch, level = 0, onExpand, expande
         const promise = create({ title: "Untitled", parentDocument: id })
             .then((documentId) => { 
                 if (!expanded) onExpand?.()
+
+                router.push(`/documents/${documentId}`)
             })
 
         toast.promise(promise, {
@@ -58,7 +60,7 @@ const Item = ({ id, documentIcon, active, isSearch, level = 0, onExpand, expande
         event.stopPropagation()
         if (!id) return
         
-        const promise = archive({ id })
+        const promise = archive({ id }).then(() => router.push("/documents"))
 
         toast.promise(promise, {
             loading: "Moving to trash...",
@@ -79,7 +81,7 @@ const Item = ({ id, documentIcon, active, isSearch, level = 0, onExpand, expande
                     <ChevronIcon className="h-4 w-4 shrink-0 text-muted-foreground/50" />
                 </div>
             }
-            {documentIcon ? <div className="shrink-0 mr-2 text-[18px]">{documentIcon}</div> : <Icon className="shrink-0 h-[18px] mr-2 text-muted-foreground" />}
+            {documentIcon ? <div className="shrink-0 mr-2 text-[18px]">{documentIcon}</div> : <Icon className="shrink-0 w-[18px] h-[18px] mr-2 text-muted-foreground" />}
             <span className="truncate">
                 { label }
             </span>
