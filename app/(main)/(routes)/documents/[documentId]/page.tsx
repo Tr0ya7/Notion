@@ -8,15 +8,15 @@ import { api } from "@/convex/_generated/api"
 import { Id } from "@/convex/_generated/dataModel"
 import { useQuery } from "convex/react"
 
-interface DocumentPageProps {
+interface DocumentIdPageProps {
   params: {
-    documentId: Id<"documents">
+    documentId: string;
   };
 }
 
-const DocumentIdPage = ({ params }: DocumentPageProps) => {
+const DocumentIdPage = ({ params }: DocumentIdPageProps) => {
   const document = useQuery(api.documents.getById, {
-    documentId: params.documentId
+    documentId: params.documentId as Id<"documents">,
   })
 
   if (document === undefined) {
@@ -37,7 +37,15 @@ const DocumentIdPage = ({ params }: DocumentPageProps) => {
 
   if (document === null) return <div>Not found</div>
 
-  return <div className="pb-40"><Cover url={document.coverImage} /><div className="mx-auto md:max-w-3xl lg:max-w-4xl"><ToolBar initialData={document} /><Editor /></div></div>
+  return (
+    <div className="pb-40">
+      <Cover url={document.coverImage} />
+      <div className="mx-auto md:max-w-3xl lg:max-w-4xl">
+        <ToolBar initialData={document} />
+        <Editor />
+      </div>
+    </div>
+  )
 }
 
 export default DocumentIdPage
