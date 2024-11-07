@@ -9,15 +9,15 @@ import { Id } from "@/convex/_generated/dataModel"
 import { useQuery } from "convex/react"
 
 interface DocumentIdPageProps {
-  params: {
-    documentId: string;
-  };
+    params: {
+      documentId: Id<"documents">
+    }
 }
 
 const DocumentIdPage = ({ params }: DocumentIdPageProps) => {
-  const document = useQuery(api.documents.getById, {
-    documentId: params.documentId as Id<"documents">,
-  })
+    const document = useQuery(api.documents.getById, {
+        documentId: params.documentId
+    })
 
   if (document === undefined) {
     return (
