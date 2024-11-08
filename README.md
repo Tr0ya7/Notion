@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fullstack Notion: Next.js, React, Convex, Tailwind
+FullStack project<br>
 
-## Getting Started
+### Technologies
+<li>Next.Js</li>
+<li>Typescript</li>
+<li>TailwindCss</li>
+<li>Convex</li>
+<li>Clerk</li>
+<li>Blocknote</li>
+<li>Node (20.18.0)</li>
 
-First, run the development server:
+### Features
+<li>Landing page</li>
+<li>Authentication</li>
+<li>Light and Dark mode</li>
+<li>Real-time database</li>
+<li>Notion-style editor</li>
+<li>Infinite children documents</li>
+<li>Trash can & soft delete</li>
+<li>File upload</li>
+<li>File deletion</li>
+<li>File replacement</li>
+<li>Icons for each document (changes in real-time)</li>
+<li>Expandable sidebar</li>
+<li>Full mobile responsiveness</li>
+<li>Publish your note to the web</li>
+<li>Fully collapsable sidebar</li>
+<li>Cover image of each document</li>
+<li>Recover deleted files</li>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Cloning
 ```
+git clone https://github.com/Tr0ya7/Notion.git
+```
+### Install all project packages:
+```
+npm i
+```
+### .env file
+```
+CONVEX_DEPLOYMENT=
+NEXT_PUBLIC_CONVEX_URL=
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+EDGE_STORE_ACCESS_KEY=
+EDGE_STORE_SECRET_KEY=
+```
+### To run the real-time database in Convex, simply add the command:
+```
+npx convex dev
+``` 
+### Run the app
+```
+npm run dev
+```
