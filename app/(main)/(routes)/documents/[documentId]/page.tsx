@@ -7,13 +7,29 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { api } from "@/convex/_generated/api"
 import { Id } from "@/convex/_generated/dataModel"
 import { useQuery } from "convex/react"
+import { useState, useEffect } from "react"
 
-const DocumentIdPage = ({ params }: { params: { documentId: string } }) => {
+const DocumentIdPage = ({ params }: { params: Promise<{ documentId: Id<"documents"> }> }) => {
+  const [documentId, setDocumentId] = useState<Id<"documents"> | null>(null)
+
+  useEffect(() => {
+    const resolveParams = async () => {
+      try {
+        const resolvedParams = await params;
+        setDocumentId(resolvedParams.documentId);
+      } catch (error) {
+        console.error("Erro ao resolver os parâmetros:", error)
+      }
+    }
+
+    resolveParams()
+  }, [params])
+
   const document = useQuery(api.documents.getById, {
-    documentId: params.documentId as Id<"documents">
+    documentId: documentId || ""
   })
 
-  if (document === undefined) {
+  if (document === undefined || documentId === null) {
     return (
       <div>
         <Cover.Skeleton />
@@ -31,15 +47,7 @@ const DocumentIdPage = ({ params }: { params: { documentId: string } }) => {
 
   if (document === null) return <div>Not found</div>
 
-  return (
-    <div className="pb-40">
-      <Cover url={document.coverImage} />
-      <div className="mx-auto md:max-w-3xl lg:max-w-4xl">
-        <ToolBar initialData={document} />
-        <Editor />
-      </div>
-    </div>
-  )
+  return <div className="pb-40"><Cover url={document.coverImage} /><div className="mx-auto md:max-w-3xl lg:max-w-4xl"><ToolBar initialData={document} /><Editor /></div></div>
 }
 
 export default DocumentIdPage
