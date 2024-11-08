@@ -9,27 +9,35 @@ import { Id } from "@/convex/_generated/dataModel"
 import { useQuery } from "convex/react"
 import { useState, useEffect } from "react"
 
-const DocumentIdPage = ({ params }: { params: Promise<{ documentId: Id<"documents"> }> }) => {
+interface DocumentIdPageProps {
+    params: Promise<{ documentId: Id<"documents"> }>
+}
+
+const DocumentIdPage = ({ params }: DocumentIdPageProps) => {
   const [documentId, setDocumentId] = useState<Id<"documents"> | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const resolveParams = async () => {
       try {
-        const resolvedParams = await params;
-        setDocumentId(resolvedParams.documentId);
+        const resolvedParams = await params
+        setDocumentId(resolvedParams.documentId)
       } catch (error) {
         console.error("Erro ao resolver os parâmetros:", error)
+      } finally {
+        setIsLoading(false)
       }
     }
 
     resolveParams()
   }, [params])
 
-  const document = useQuery(api.documents.getById, {
-    documentId: documentId || ""
-  })
+  const document = useQuery(
+    api.documents.getById, 
+    { documentId: documentId as Id<"documents"> }
+  )
 
-  if (document === undefined || documentId === null) {
+  if (isLoading || document === undefined) {
     return (
       <div>
         <Cover.Skeleton />
@@ -44,7 +52,6 @@ const DocumentIdPage = ({ params }: { params: Promise<{ documentId: Id<"document
       </div>
     )
   }
-
   if (document === null) return <div>Not found</div>
 
   return <div className="pb-40"><Cover url={document.coverImage} /><div className="mx-auto md:max-w-3xl lg:max-w-4xl"><ToolBar initialData={document} /><Editor /></div></div>
